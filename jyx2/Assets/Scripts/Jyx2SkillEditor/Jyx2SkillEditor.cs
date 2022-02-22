@@ -14,7 +14,7 @@ using Sirenix.OdinInspector;
 
 public class Jyx2SkillEditor : MonoBehaviour
 {
-    public BattleRole player;
+    public MapRole player;
 
     public Jyx2SkillEditorEnemy[] enemys;
 

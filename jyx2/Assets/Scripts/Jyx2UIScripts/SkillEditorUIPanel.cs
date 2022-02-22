@@ -19,7 +19,7 @@ using UnityEngine;
 public partial class SkillEditorUIPanel:Jyx2_UIBase
 {
     
-    public BattleRole player;
+    public MapRole player;
 
     public Jyx2SkillEditorEnemy[] enemys;
 
@@ -97,7 +97,7 @@ public partial class SkillEditorUIPanel:Jyx2_UIBase
     protected override void OnShowPanel(params object[] allParams)
     {
         base.OnShowPanel(allParams);
-        player = allParams[0] as BattleRole;
+        player = allParams[0] as MapRole;
         enemys = allParams[1] as Jyx2SkillEditorEnemy[];
         //DoSwitchRoleModel().Forget();//这里也去掉，防止多次加载模型
     }

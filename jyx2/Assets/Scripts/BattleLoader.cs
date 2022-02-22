@@ -274,7 +274,7 @@ public class BattleLoader : MonoBehaviour
             npcRoot = new GameObject("BattleRoles");
         }
 
-        BattleRole roleView;
+        MapRole roleView;
         //JYX2苟且逻辑：找第一个能找到的角色设置为主角
         if (!setPlayer)
         {
@@ -290,6 +290,7 @@ public class BattleLoader : MonoBehaviour
         
         roleView.transform.SetParent(npcRoot.transform, false);
         roleView.transform.position = pos.position;
+
         role.team = team;
         return roleView.RefreshModel(); //刷新模型
     }

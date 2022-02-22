@@ -753,7 +753,7 @@ namespace Jyx2
 
         private Jyx2ConfigCharacter _data;
 
-        public BattleRole View { get; set; }
+        public MapRole View { get; set; }
 
         #region 战斗相关
 

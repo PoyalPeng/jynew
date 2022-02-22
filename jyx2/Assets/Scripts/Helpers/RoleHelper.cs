@@ -22,17 +22,17 @@ public static class RoleHelper
     /// 寻找主角
     /// </summary>
     /// <returns>MapRole角色</returns>
-    public static Jyx2Player FindPlayer()
+    public static MapRole FindPlayer()
     {
         var obj = GameObject.Find("Level/Player");
-        if (obj != null) return obj.GetComponent<Jyx2Player>();
+        if (obj != null) return obj.GetComponent<MapRole>();
         obj = GameObject.FindWithTag("Player");
         if (obj == null)
         {
             //Debug.LogError("找不到主角，请设置层级为Level/Player。或者Tag设置为Player");
             return null;
         }
-        return obj.GetComponent<Jyx2Player>();
+        return obj.GetComponent<MapRole>();
     }
 
     /// <summary>
@@ -40,10 +40,10 @@ public static class RoleHelper
     /// TODO:这一段没改，因为不太清楚缓存这个
     /// </summary>
     /// <param name="role"></param>
-    public static BattleRole CreateRoleView(this RoleInstance role, string tag = "NPC")
+    public static MapRole CreateRoleView(this RoleInstance role, string tag = "NPC")
     {
-        var roleViewPre = Jyx2ResourceHelper.GetCachedPrefab("BattleRole");
-        var roleView = GameObject.Instantiate(roleViewPre).GetComponent<BattleRole>();
+        var roleViewPre = Jyx2ResourceHelper.GetCachedPrefab("MapRole");
+        var roleView = GameObject.Instantiate(roleViewPre).GetComponent<MapRole>();
         role.View = roleView;
         roleView.DataInstance = role;
         roleView.m_RoleKey = role.Key;
@@ -57,7 +57,7 @@ public static class RoleHelper
     /// </summary>
     /// <param name="roleKey">角色Key</param>
     /// <param name="roleView">角色模型</param>
-    public static void CreateRoleInstance(this BattleRole roleView, int roleKey)
+    public static void CreateRoleInstance(this MapRole roleView, int roleKey)
     {
         roleView.BindRoleInstance(new RoleInstance(roleKey)).Forget();
         roleView.DataInstance.Hp = roleView.DataInstance.MaxHp; //默认满血
@@ -68,7 +68,7 @@ public static class RoleHelper
     /// </summary>
     /// <param name="roleView">角色模型（展示在地图上的）</param>
     /// <param name="role">角色数据/param>
-    public static async UniTask BindRoleInstance(this BattleRole roleView, RoleInstance role)
+    public static async UniTask BindRoleInstance(this MapRole roleView, RoleInstance role)
     {
         if (role == null || roleView == null)
             return;

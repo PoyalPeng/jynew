@@ -48,7 +48,7 @@ public class BattleBlockHelper : MonoBehaviour {
     {
         if (Input.GetKey("g"))
         {
-            DrawMovezones(Jyx2Player.GetPlayer().transform.position);
+            DrawMovezones(GameRuntimeData.Instance.Player.View.transform.position);
         }
         else if (Input.GetKey("h"))
         {
@@ -60,7 +60,7 @@ public class BattleBlockHelper : MonoBehaviour {
     public void InitMovezones(int range = -1)
     {
         SetBlockColor(Color.white);
-        DrawMovezones(Jyx2Player.GetPlayer().transform.position, range);
+        DrawMovezones(GameRuntimeData.Instance.Player.View.transform.position, range);
         StartCoroutine(SetDecalsHidenFrames(2));
     }
 
